@@ -1,7 +1,7 @@
 :root {
-    --fg: #3d4397;
-	--focus: #767ffa;
-    --bg: #0b0c10;
+    --fg: #bababa;
+	--focus: #ffffff;
+    --bg: #080808;
   }
   /* *{
     outline: red 2px solid;
@@ -13,10 +13,12 @@
   }
 body{
     background-color: var(--bg);
-    background-image: url("./assets/bg.webp");
     font-family: "Tiny5", sans-serif;
     font-weight: 400;
     font-style: normal;
+}
+.main{
+	padding-top: 5rem;
 }
 .header{
     display: flex;
@@ -35,14 +37,11 @@ a{
 }
 .menu{
     display: flex;
-    gap: 2rem;
-	margin-top: 5rem;
-	display: flex;
-    margin-inline: auto;
+	margin-top: 2rem;
     width: 100%;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+	justify-content: space-between;
 }
 .profile-wrap{
 	display:flex;
@@ -65,7 +64,7 @@ a{
 	width: 30rem;
 }
 .menu-button{
-    width: 30rem;
+	width: 14rem;
     height: 3.5rem;
     background-color: var(--bg);
     border: 2px solid var(--fg);
@@ -82,6 +81,7 @@ a{
 	position: relative;
 	margin-right: 0.2rem;
 	top:2px;
+	filter: grayscale(100%) brightness(150%);
 }
 .content{
     
@@ -178,10 +178,10 @@ body {
 	left: 0;
 	color: #fff;
 	font-size: 2rem;
-	min-width: 100vw;
+	width: 950px;
+	margin-inline: auto;
 	min-height: 100vh;
 	background: var(--bg);
-    background-image: url("./assets/bg.webp");
     background-size: 960px 540px;
     background-position: 20%;
 }
