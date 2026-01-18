@@ -70,10 +70,6 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* window decoration effect */
-    box-shadow: 0px -8px 0px 0px var(--fg);
-    -webkit-box-shadow: 0px -8px 0px 0px var(--fg);
-    -moz-box-shadow: 0px -8px 0px 0px var(--fg);
     font-size: 14pt;
 }
 .menu-button a{
@@ -107,7 +103,7 @@ a{
 	margin-top: 2rem;
 	font-size: 14pt;
 	text-align: center;
-	outline: 1px solid white;
+    border: 2px solid var(--fg);
 	padding: 1rem;
 }
 
@@ -117,7 +113,7 @@ a{
 }
 .post{
 	display: flex;
-	outline: 1px solid white;
+    border: 2px solid var(--fg);
 	margin-top: 2rem;
 }
 .album-art{
