@@ -156,6 +156,9 @@ a{
 	height: 5rem;
 	margin-top: 2rem;
 }
+.mobile-download-wrapper{
+	display: none;
+}
 /* crt effect */
 /* credits to creme (https://codepen.io/creme)*/
 
@@ -433,5 +436,6 @@ body {
 	}
 	.mobile-download-wrapper{
 		width: 5rem;
+		display: block;
 	}
   }
