@@ -385,6 +385,9 @@ body {
 }
 @media (max-width: 1020px) {
 
+	.main{
+		width: 100%;
+	}
 	.content{
 		flex-direction: column;
 		padding-block: none;
@@ -405,8 +408,30 @@ body {
 	}
 	.menu{
 		margin-top: 0;
+		flex-wrap: wrap;
+		justify-content: center;
 	}
 	.menu-button{
 		width: 90%;
+	}
+	.post-blurb{
+		margin-inline: 1.3rem;
+	}
+	.posts{
+		margin-inline: 1.3rem;
+	}
+	.album-art{
+		border-right: none;
+		padding-left: 1rem;
+		display: flex;
+		justify-content: center;
+        flex-direction: column;
+        align-items: center;
+	}
+	.download-wrapper{
+		display: none;
+	}
+	.mobile-download-wrapper{
+		width: 5rem;
 	}
   }
