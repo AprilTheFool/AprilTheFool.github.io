@@ -12,15 +12,16 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
     <link rel="icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="style.css">
     <script type="importmap">
 {
     "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+        "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+        "three/webgpu": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.webgpu.js",
+        "three/tsl": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.tsl.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
     }
 }
 </script>
@@ -28,6 +29,14 @@
 </head>
 
 <body>
+    <div class="loading-screen" role="status" aria-live="polite">
+        <div class="loading-mark" aria-hidden="true">
+            <span class="loading-bracket" data-glitch="[">[</span>
+            <span class="loading-word">LOADING</span>
+            <span class="loading-bracket" data-glitch="]">]</span>
+        </div>
+        <span class="loading-message">Loading 3D background...</span>
+    </div>
     <div class="bg-ovr">
     </div>
     <canvas id="three-bg"></canvas>

@@ -135,12 +135,140 @@ table {
 
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap');
 
+p, h1{
+    transition: ease-in-out 100ms;
+}
+
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f1;
+    color: #0d0d0d;
+    transition: opacity 250ms ease, visibility 250ms ease;
+}
+
+.loading-screen.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-mark {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.loading-bracket {
+    position: relative;
+    display: inline-block;
+    width: 0.7em;
+    color: #0d0d0d;
+    font-family: "Libre Baskerville", serif;
+    font-size: clamp(1rem, 4vw, 1.35rem);
+    line-height: 1;
+    text-align: center;
+}
+
+.loading-bracket::before {
+    position: absolute;
+    inset: 0;
+    color: #777;
+    content: attr(data-glitch);
+    pointer-events: none;
+    animation: sigil-glitch-a 1.8s steps(1, end) infinite;
+}
+
+.loading-bracket::after {
+    position: absolute;
+    inset: 0;
+    color: #444;
+    content: attr(data-glitch);
+    pointer-events: none;
+    animation: sigil-glitch-b 2.6s steps(1, end) infinite;
+}
+
+.loading-word {
+    display: grid;
+    grid-template-columns: repeat(7, 1ch);
+    font-family: monospace;
+    font-size: clamp(1rem, 4vw, 1.35rem);
+    letter-spacing: 0.08em;
+}
+
+.loading-word > span {
+    text-align: center;
+}
+
+.loading-message {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0;
+}
+
+.loading-screen.has-error .loading-word {
+    display: block;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+}
+
+.loading-screen.has-error .loading-bracket::before,
+.loading-screen.has-error .loading-bracket::after {
+    animation: none;
+}
+
+@keyframes sigil-glitch-a {
+    0%, 12%, 23%, 100% {
+        clip-path: inset(0 0 100%);
+        transform: translateX(0);
+    }
+    13%, 18% {
+        clip-path: inset(18% 0 56%);
+        transform: translateX(-8px);
+    }
+    19%, 22% {
+        clip-path: inset(66% 0 14%);
+        transform: translateX(6px);
+    }
+}
+
+@keyframes sigil-glitch-b {
+    0%, 46%, 57%, 100% {
+        clip-path: inset(0 0 100%);
+        transform: translateX(0);
+    }
+    47%, 51% {
+        clip-path: inset(42% 0 36%);
+        transform: translateX(9px);
+    }
+    52%, 56% {
+        clip-path: inset(10% 0 72%);
+        transform: translateX(-7px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loading-bracket::before,
+    .loading-bracket::after {
+        animation: none;
+    }
+}
+
 /*
     STYLES
 */
 .main {
     display: flex;
-    width: 50rem;
     height: 50rem;
     margin-inline: auto;
     margin-top: 10rem;
@@ -170,11 +298,44 @@ a {
     text-decoration: none;
     color: rgb(13, 13, 13);
     font-size: 1.5rem;
+    font-family: monospace;
+}
+
+.links a {
+    position: relative;
+    display: inline-block;
+    margin: -0.15em;
+    padding: 0.15em;
+}
+
+.scramble-original {
+    display: inline-block;
+}
+
+.scramble-text {
+    position: absolute;
+    inset: 0.15em;
+    display: grid;
+    grid-template-columns: repeat(var(--character-count), minmax(0, 1fr));
+    font-family: monospace;
+    white-space: pre;
+    pointer-events: none;
+}
+
+.scramble-text > span {
+    overflow: hidden;
+    text-align: center;
+}
+
+.links a.is-scrambling .scramble-original {
+    visibility: hidden;
 }
 
 a:hover {
-    color: rgb(13, 13, 13);
+    color: rgb(255, 255, 255);
+    background-color: black;
     text-decoration: underline;
+    outline: 5px solid black;
 }
 
 .footer {
@@ -224,4 +385,18 @@ body {
 .main-wrap {
     margin-inline: auto;
     width: 100vw;
+}
+
+@media (max-width: 800px) {
+    .links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 600px) {
+    h1{
+        font-size: 2em;
+        font-weight: bold;
+    }
 }
